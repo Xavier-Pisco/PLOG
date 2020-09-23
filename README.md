@@ -39,6 +39,16 @@ Nota: 1º Trabalho tem interface com LAIG
 
 ## Datas
 
+1º Trabalho entrega intermédia - 1 de Novembro
+
+1º Teste - 28 de Novembro
+
+1º Trabalho entrega final - 29 de Novembro
+
+2º Trabalho - 4 de Janeiro
+
+2º Teste - 8 de Janeiro
+
 ---
 
 ## Teóricas
