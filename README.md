@@ -41,7 +41,7 @@ Nota: 1º Trabalho tem interface com LAIG
 
 1º Trabalho entrega intermédia - 1 de Novembro
 
-1º Teste - 28 de Novembro
+1º Teste - 28 de Novembro (Sábado)
 
 1º Trabalho entrega final - 29 de Novembro
 
