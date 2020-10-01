@@ -18,11 +18,11 @@ female(sara).
 female(lisa).
 
 mother(Mother, Son):-
-    female(Mother).
+    female(Mother),
     parent(Mother,Son).
 
 father(Father, Son):-
-    male(Father).
+    male(Father),
     parent(Father,Son).
 
 /**
