@@ -11,4 +11,7 @@ extra(X,Y):-
     Y * Y < X,
     Y1 is Y + 2,
     extra(X,Y1).
-    
+
+/**
+Não consegui fazer sem ser com base na solução
+*/
