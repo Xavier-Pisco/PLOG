@@ -5,7 +5,7 @@ delete_one(X, L1, L2):-
     append(L3, L4, L2).
 
 % Caso base
-delete_all(X, [], []).
+delete_all(_, [], []).
 
 % Se Head for o elemento a eliminar, remove-o e não altera L2 
 delete_all(X, [X|L1], L2):-
