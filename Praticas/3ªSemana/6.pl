@@ -15,3 +15,11 @@ delete_all(X, [X|L1], L2):-
 delete_all(X, [Y|L1], [Y|L2]):-
     X \= Y,
     delete_all(X, L1, L2).
+
+% Caso base
+delete_all_list([], L, L).
+
+% Faz delete_all com base na Head e, recursivamente, vai à tail.
+delete_all_list([X|LX], L1, L2):-
+    delete_all(X, L1, L3),
+    delete_all_list(LX, L3, L2).
