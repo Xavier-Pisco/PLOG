@@ -21,5 +21,39 @@ lista_entre(N1, N2, [N1|L]):-
 soma_lista([], 0).
 
 soma_lista([X|L], Soma):-
-    Soma1 is Soma - X,
-    soma_lista(L, Soma1).
+    soma_lista(L, SomaTail),
+    Soma is SomaTail + X.
+
+par(X):-
+    X > 0,
+    0 is mod(X, 2).
+
+lista_pares(1, []).
+lista_pares(0, []).
+
+lista_pares(N, [N | L]):-
+    par(N),
+    N1 is N - 2,
+    lista_pares(N1, L).
+
+lista_pares(N, [X | L]):-
+    X is N - 1,
+    par(X),
+    N1 is N - 3,
+    lista_pares(N1, L).
+
+lista_impares(1, [1]).
+lista_impares(0, []).
+
+lista_impares(N, [N | L]):-
+    N > 1,
+    \+par(N),
+    N1 is N - 2,
+    lista_impares(N1, L).
+
+lista_impares(N, [X | L]):-
+    N > 1,
+    X is N - 1,
+    \+par(X),
+    N1 is N - 3,
+    lista_impares(N1, L).
