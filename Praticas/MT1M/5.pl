@@ -13,9 +13,13 @@ performance(3788,[110,2,6,43]).
 performance(4865,[120,120,110,120]).
 performance(8937,[97,101,105,110]).
 
-% Não sei criar uma lista com os participantes
+% Não consegui fazer sem findAll
 allPerfs:-
-	showList([1234, 3423, 3788, 4865, 8937]).
+	createList(Performed),
+	showList(Performed).
+
+createList(Performed):-
+	findall(Particpant, performance(Particpant, _), Performed).
 
 showList([]).
 
