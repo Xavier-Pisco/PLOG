@@ -22,7 +22,7 @@ predX(Q,[R|Rs],Ps) :-
 predX(_,[],[]).
 
 /**
-predX(+Idade, +Participantes, -Performance).
+predX(+Idade, +Participantes, -Performances).
 
 Este predicado recebe uma idade e uma lista de participantes e cria
 uma lista com os nomes das performances desses participantes que tenham uma
@@ -30,6 +30,4 @@ idade menor ou igual à idade.
 
 O cut utilizado é um cut verde pois não altera o funcionamento do programa
 e a sua única funcionalidade é melhorar a eficácia do programa.
-
-
 */
