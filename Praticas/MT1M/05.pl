@@ -15,18 +15,9 @@ performance(8937,[97,101,105,110]).
 
 % Não consegui fazer sem findAll
 allPerfs:-
-	createList(Performed),
-	showList(Performed).
-
-createList(Performed):-
-	findall(Particpant, performance(Particpant, _), Performed).
-
-showList([]).
-
-showList([PerformedHead | PerformedTail]):-
-	showParticipant(PerformedHead),
-	nl,
-	showList(PerformedTail).
+	performance(Particpant, _),
+	showParticipant(Particpant),
+	fail.
 
 showParticipant(Particpant):-
 	write(Particpant),
@@ -37,12 +28,14 @@ showParticipant(Particpant):-
 	performance(Particpant, Times),
 	write('['),
 	writeTimes(Times),
-	write(']').
+	write(']'),
+	nl.
 
 writeTimes([TimesHead | []]):-
 	write(TimesHead).
 
 writeTimes([TimesHead | TimesTail]):-
+	TimesTail \= [],
 	write(TimesHead),
 	write(','),
 	writeTimes(TimesTail).
