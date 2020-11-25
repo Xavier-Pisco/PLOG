@@ -1,5 +1,7 @@
 %player(Name, Username, Age)
 player('Danny', 'Best Player Ever', 27).
+:-dynamic(played/4).
+
 player('Annie', 'Worst Player Ever', 24).
 player('Harry', 'A-Star Player', 26).
 player('Manny', 'The Player', 14).
@@ -11,6 +13,7 @@ game('Carrier Shift: Game Over', [action, fps, multiplayer, shooter], 16).
 game('Duas Botas', [action, free, strategy, moba], 12).
 
 %played(Player, Game, HoursPlayed, PercentUnlocked)
+
 played('Best Player Ever', '5 ATG', 3, 83).
 played('Worst Player Ever', '5 ATG', 52, 9).
 played('The Player', 'Carrier Shift: Game Over', 44, 22).
