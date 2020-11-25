@@ -6,9 +6,9 @@ player('Manny', 'The Player', 14).
 player('Jonny', 'A Player', 16).
 
 %game(Name, Categories, MinAge)
-player('5 ATG', [action, adventure, open-world, multiplayer], 18).
-player('Carrier Shift: Game Over', [action, fps, multiplayer, shooter], 16).
-player('Duas Botas', [action, free, strategy, moba], 12).
+game('5 ATG', [action, adventure, open-world, multiplayer], 18).
+game('Carrier Shift: Game Over', [action, fps, multiplayer, shooter], 16).
+game('Duas Botas', [action, free, strategy, moba], 12).
 
 %played(Player, Game, HoursPlayed, PercentUnlocked)
 played('Best Player Ever', '5 ATG', 3, 83).
