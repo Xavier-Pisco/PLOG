@@ -20,10 +20,8 @@ juriFans(JuriFansList):-
 
 createList([], []).
 
-createList([PerformedHead | PerformedTail], [JuriFansListHead | JuriFansListTail]):-
+createList([PerformedHead | PerformedTail], [PerformedHead-JuriFans | JuriFansListTail]):-
 	checkJuriMembers(PerformedHead, JuriFans),
-	toString(JuriFans, String),
-	format('~d-[~s]', [PerformedHead, String]), nl, % Need to put this onto JuriFansListHead
 	createList(PerformedTail, JuriFansListTail).
 
 checkJuriMembers(Participant, JuriFans):-
