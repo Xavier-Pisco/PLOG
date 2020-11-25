@@ -48,7 +48,7 @@ nextPhase(N, [ParticipantsHead | ParticipantsTail]):-
 	N1 is N - 1,
 	removeBest(EligibleParticipants, BestParticipant, NewEligibleParticipants),
 	eligibleOutcome(BestParticipant, BestPerf, BestTT),
-	copyVariable(ParticipantsHead, [BestTT, BestParticipant, BestPerf]),
+	ParticipantsHead = [BestTT, BestParticipant, BestPerf],
 	nextPhase(N1, ParticipantsTail, NewEligibleParticipants).
 
 nextPhase(N, [ParticipantsHead | ParticipantsTail], EligibleParticipants):-
@@ -57,7 +57,7 @@ nextPhase(N, [ParticipantsHead | ParticipantsTail], EligibleParticipants):-
 	N1 is N - 1,
 	removeBest(EligibleParticipants, BestParticipant, NewEligibleParticipants),
 	eligibleOutcome(BestParticipant, BestPerf, BestTT),
-	copyVariable(ParticipantsHead, [BestTT, BestParticipant, BestPerf]),
+	ParticipantsHead = [BestTT, BestParticipant, BestPerf],
 	nextPhase(N1, ParticipantsTail, NewEligibleParticipants).
 
 removeBest([Participant | ParticipantsTail], Participant, ParticipantsTail).
@@ -76,5 +76,3 @@ bestParticipant([Id | ParticipantsTail], BestId, BestTT):-
 		BestId is TailBestId,
 		BestTT is TailBestTT
 	).
-
-copyVariable(String, String).
