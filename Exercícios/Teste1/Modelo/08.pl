@@ -39,7 +39,7 @@ eligibleOutcome(Id,Perf,TT) :-
 nextPhase(0, []).
 nextPhase(0, [], _).
 
-nextPhase(N, [ParticipantsHead | ParticipantsTail]):-
+nextPhase(N, [BestTT-BestParticipant-BestPerf | ParticipantsTail]):-
 	N > 0,
 	findall(Id ,eligibleOutcome(Id, _, _), EligibleParticipants),
 	length(Participants, X),
@@ -48,16 +48,14 @@ nextPhase(N, [ParticipantsHead | ParticipantsTail]):-
 	N1 is N - 1,
 	removeBest(EligibleParticipants, BestParticipant, NewEligibleParticipants),
 	eligibleOutcome(BestParticipant, BestPerf, BestTT),
-	ParticipantsHead = [BestTT, BestParticipant, BestPerf],
 	nextPhase(N1, ParticipantsTail, NewEligibleParticipants).
 
-nextPhase(N, [ParticipantsHead | ParticipantsTail], EligibleParticipants):-
+nextPhase(N, [BestTT-BestParticipant-BestPerf | ParticipantsTail], EligibleParticipants):-
 	N > 0,
 	bestParticipant(EligibleParticipants, BestParticipant, _),
 	N1 is N - 1,
 	removeBest(EligibleParticipants, BestParticipant, NewEligibleParticipants),
 	eligibleOutcome(BestParticipant, BestPerf, BestTT),
-	ParticipantsHead = [BestTT, BestParticipant, BestPerf],
 	nextPhase(N1, ParticipantsTail, NewEligibleParticipants).
 
 removeBest([Participant | ParticipantsTail], Participant, ParticipantsTail).
