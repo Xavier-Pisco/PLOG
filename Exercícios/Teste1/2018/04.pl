@@ -1,9 +1,15 @@
 :- [database].
 
 countries(Company, Countries):-
-	findall(Company, flight(_, _, _, _, _, Company), Companies).
+	countriesAux(Company, [], Countries).
+
+
+countriesAux(Company, Temp, Countries):-
 	operates(Company, Country),
-	countries(Company, CountriesTail).
+	\+member(Country, Temp), !,
+	countriesAux(Company, [Country | Temp], Countries).
+
+countriesAux(_, Countries, Countries).
 
 operates(Company, Country):-
 	flight(_, Airport, _, _, _, Company),
