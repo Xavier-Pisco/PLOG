@@ -1,7 +1,7 @@
-%player(Name, Username, Age)
-player('Danny', 'Best Player Ever', 27).
 :-dynamic(played/4).
 
+%player(Name, Username, Age)
+player('Danny', 'Best Player Ever', 27).
 player('Annie', 'Worst Player Ever', 24).
 player('Harry', 'A-Star Player', 26).
 player('Manny', 'The Player', 14).
