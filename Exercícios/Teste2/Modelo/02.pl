@@ -1,3 +1,4 @@
+:- consult('01.pl').
 :- use_module(library(clpfd)).
 
 p2(L1,L2) :-
