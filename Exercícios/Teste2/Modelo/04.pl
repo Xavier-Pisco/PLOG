@@ -2,6 +2,10 @@
 :- use_module(library(clpfd)).
 
 constroi(NEmb, Orcamento, EmbPorObjeto, CustoPorObjeto, EmbUsadas, Objetos):-
+	findall(Emb-Obj, temp(NEmb, Orcamento, EmbPorObjeto, CustoPorObjeto, Emb, Obj), Results), !,
+	findMax(Results, EmbUsadas, Objetos).
+
+temp(NEmb, Orcamento, EmbPorObjeto, CustoPorObjeto, EmbUsadas, Objetos):-
 	length(Objetos, 4),
 	length(EmbPorObjeto, N),
 	domain(Objetos, 1, N),
@@ -12,6 +16,16 @@ constroi(NEmb, Orcamento, EmbPorObjeto, CustoPorObjeto, EmbUsadas, Objetos):-
 	EmbUsadas #=< NEmb,
 	labeling([], [EmbUsadas]),
 	labeling([], Objetos).
+
+findMax([], 0, []).
+findMax([Emb-Obj | Tail], MaxEmb, MaxObj):-
+	findMax(Tail, TempMax, TempObj),
+	(TempMax > Emb,
+		MaxEmb is TempMax,
+		MaxObj = TempObj;
+		MaxEmb is Emb,
+		MaxObj = Obj
+	).
 
 custoLimite(Orcamento, _, []):- Orcamento >= 0.
 custoLimite(Orcamento, CustoPorObjeto, [OH | OT]):-
