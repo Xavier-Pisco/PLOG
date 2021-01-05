@@ -2,13 +2,14 @@
 :- use_module(library(clpfd)).
 
 p3(L1,L2) :-
-    length(L1,N),
-    length(L2,N),
-	domain(L2, 0, 100),
+    length(L1,N), % [1,2,5,3]
+    length(L2,N), % [1,2,3,5]
+    length(Is, N), % [1,2,4,3]
+	domain(Is, 1, N),
     pos(L1,L2,Is),
     all_distinct(Is),
 	test2(L2),
-    labeling([],Is).
+    labeling([],Is). % 1 - 4 1243
 
 pos([],_,[]).
 pos([X|Xs],L2,[I|Is]) :-
