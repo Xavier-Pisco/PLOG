@@ -11,19 +11,23 @@
 | | | | | |
 |N| | | | |
 
-Como assim 2<sup>NK</sup>???
+[1, 1], [1, 2], ..., [1, K], [2, 1], ..., [N, K].
+
+Assim vão existir N * K variáveis.
+
+As variáveis do domínio são N e K logo tamanho 2.
+
+Espaço de pesquisa: 2<sup>NK</sup>
 
 ## Pergunta 2
 
-Pessoa K pode ter presentes:
-- 1
-- 2
-- ...
-- N
+1, 2, ..., N
 
-ou seja, para cada pessoa existem N possibilidades, logo K*N.
+Variáveis de domínio = K.
 
-Como assim K<sup>N</sup>???
+Domínio = N.
+
+Espaço de procura = K<sup>N</sup>
 
 ## Pergunta 3
 
