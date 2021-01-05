@@ -20,31 +20,30 @@ test([X1,X2,X3|Xs]) :-
 
 receitas(NOvos, TempoMax, OvosPorReceita, TempoPorReceita, OvosUsados, Receitas):-
 	length(OvosPorReceita, NumReceitas),
-	length(Receitas, 4),
-	domain(Receitas, 1, NumReceitas),
-	all_distinct(Receitas),
-	tempo(TempoPorReceita, Receitas, 1, TempoUsado),
-	TempoUsado =< TempoMax,
-	ovos(OvosPorReceita, Receitas, 1, OvosUsados),
-	OvosUsados =< NOvos,
-	labeling([maximize(OvosUsados)], Receitas).
 
-tempo(_, [], _, 0).
-tempo([TH | TT], [RH | RT], Current, TempoUsado):-
-	RH #= Current,
-	Next is Current + 1,
-	tempo(TT, RT, Next, TempoMid),
-	TempoUsado is TempoMid + TH.
-tempo([_ | TT], Receitas, Current, TempoUsado):-
-	Next is Current + 1,
-	tempo(TT, Receitas, Next, TempoUsado).
+	% Temp é um array de 0 e 1 para fazer produto escalar com os OvosPorReceita e os TempoPorReceita
+	length(Temp, NumReceitas),
+	domain(Temp, 0, 1),
 
-ovos(_, [], _, 0).
-ovos([OH | OT], [RH | RT], Current, OvosUsados):-
-	RH #= Current,
-	Next is Current + 1,
-	tempo(OT, RT, Next, OvosMid),
-	OvosUsados is OvosMid + OH.
-ovos([_ | OT], Receitas, Current, OvosUsados):-
-	Next is Current + 1,
-	tempo(OT, Receitas, Next, OvosUsados).
+	count(1, Temp, #=, 4), % Certifica que existem exatamente 4 1s em Temp
+	scalar_product(TempoPorReceita, Temp, #=<, TempoMax), % Resultado do produto escalar é o tempo das 4 receitas
+	scalar_product(OvosPorReceita, Temp, #=, OvosUsados), % Resultado do produto escalar é os ovos das 4 receitas
+	OvosUsados #=< NOvos,
+
+	labeling([maximize(OvosUsados)], Temp),
+	findall(Index, nth1(Index, Temp, 1), Receitas). % Cria uma lista com os índices das posições com valor 1 em Temp
+
+
+build(Budget, NPacks, ObjectCosts, ObjectPacks, Objects, UsedPacks):-
+	length(ObjectCosts, N),
+
+	length(Temp, N),
+	domain(Temp, 0, 1),
+
+	count(1, Temp, #=, 3),
+	scalar_product(ObjectCosts, Temp, #=, Budget),
+	scalar_product(ObjectPacks, Temp, #=, UsedPacks),
+	UsedPacks #=< NPacks,
+
+	labeling([maximize(UsedPacks)], Temp),
+	findall(Index, nth1(Index, Temp, 1), Objects).
