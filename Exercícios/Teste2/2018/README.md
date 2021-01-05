@@ -10,6 +10,11 @@ Por fim, o predicado check verifica se os números da lista L2 são a soma dos n
 
 ## Pergunta 2
 
+As duas listas juntas vão ter 2N - 1 elementos diferentes.
+
+Existem M variáveis diferentes.
+
+Espaço de procura: M<sup>2N-1</sup>
 
 ## Pergunta 3
 
