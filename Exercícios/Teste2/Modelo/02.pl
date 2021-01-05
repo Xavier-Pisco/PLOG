@@ -17,5 +17,5 @@ pos([X|Xs],L2,[I|Is]) :-
     pos(Xs,L2,Is).
 
 /*
-e. Não é possível etiquetar Is, pois estas variáveis não têm domínio definido, e nem todas as restrições foram colocadas antes da fase da pesquisa.
+As variáveis de domínio estão a ser instanciadas antes da fase de pesquise e nem todas as restrições foram colocadas antes da fase de pesquisa
 */
