@@ -39,8 +39,8 @@ embrulha(Rolos, Presentes, RolosSelecionados):-
     getMachines(Rolos, Machines, 1),
     cumulatives(Tasks, Machines, [bound(upper)]),  
     /* 
-    Verifica para toas as Tasks se Fim = Início + Duração.
-    Verifica se para todas as tasks com o mesmo Id (neste caso com o mesmo RoloSelecionado) se
+    Verifica para todas as Tasks se Fim = Início + Duração.
+    Verifica se para todas as tasks com o mesmo Id de máquina (neste caso com o mesmo RoloSelecionado)
     a máquina com esse Id (neste caso o Rolo) cumpre o limite imposto.
     O limite pode ser upper ou lower, no caso de ser upper significa que a máquina tem limite suficiente para todas,
     no caso de ser lower significa que as tasks utilizam mais do que a máquina tem.
