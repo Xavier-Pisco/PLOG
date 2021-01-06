@@ -11,7 +11,6 @@ Quanto à eficácia, o programa é pouco eficiente pois constroí a lista inteir
 
 ## Pergunta 4
 
-Não está a otimizar pelo número de ovos usados, apenas está a escolher 4 receitas que funcionem
 
 ```prolog
 receitas(NOvos, TempoMax, OvosPorReceita, TempoPorReceita, OvosUsados, Receitas):-
