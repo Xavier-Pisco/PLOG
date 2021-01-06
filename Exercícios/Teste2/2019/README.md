@@ -83,4 +83,6 @@ O domínio atribuídos às variàveis em Vars será o número de partições do 
 
 Assim, a lista Vars vai ser um lista com comprimento igual à lista de objetos em que cada valor da lista representa o compartimento no armário, começando a contar da esquerda para a direita e de cima para baixo.
 
+[código](resolucao.pl#36)
+
 ## Pergunta 7

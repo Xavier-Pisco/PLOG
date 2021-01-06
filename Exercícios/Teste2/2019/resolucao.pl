@@ -31,3 +31,60 @@ constroi_bins(I, [VH | VT], [LBinH | LBinT]):-
 constroi_bins(I, [VH | VT], LBin):-
 	VH #\= I,
 	constroi_bins(I, VT, LBin).
+
+
+prat(Prateleiras, Objetos, Vars):-
+	length(Objetos, N),
+	length(Vars, N),
+	comprimento(Prateleiras, Comprimento),
+	length(Prateleiras, Altura),
+	Domain is Comprimento * Altura,
+	domain(Vars, 1, Domain),
+
+	get_tasks(Objetos, Vars, Tasks),
+	append(Prateleiras, Armario),
+	get_machines(Armario, Machines, 1),
+	cumulatives(Tasks, Machines,  [bound(upper)]),
+
+	length(Pesos, Domain),
+	get_pesos(Objetos, Vars, Pesos, 1),
+	set_pesos(Pesos, Comprimento, 1),
+
+	labeling([], Vars).
+
+comprimento([P | _], Comprimento):-
+	length(P, Comprimento).
+
+get_tasks([], [], []).
+get_tasks([_-OVolume | Objetos], [V | Vars], [T | Tasks]):-
+	T = task(0, OVolume, OVolume, OVolume, V),
+	get_tasks(Objetos, Vars, Tasks).
+
+get_machines([],[],_).
+get_machines([P | Prateleiras], [M | Machines], Id):-
+	M = machine(Id, P),
+	Next is Id + 1,
+	get_machines(Prateleiras, Machines, Next).
+
+get_peso([], [], 0, _).
+get_peso([O-_ | Objetos], [V | Vars], Peso, Current):-
+	(V #= Current) #<=> Bool,
+	Peso #= Bool * O + Temp,
+	get_peso(Objetos, Vars, Temp, Current).
+
+get_pesos(_, _, [], _).
+get_pesos(Objetos, Vars, [P | Pesos], Current):-
+	get_peso(Objetos, Vars, P, Current),
+	Next is Current + 1,
+	get_pesos(Objetos, Vars, Pesos, Next).
+
+set_pesos(Pesos, Comprimento, Current):-
+	length(Pesos, N),
+	Current is N - Comprimento + 1.
+set_pesos(Pesos, Comprimento, Current):-
+	Baixo is Current + Comprimento,
+	element(Current, Pesos, P1),
+	element(Baixo, Pesos, P2),
+	P1 #=< P2,
+	Next is Current + 1,
+	set_pesos(Pesos, Comprimento, Next).
