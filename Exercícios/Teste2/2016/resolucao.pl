@@ -24,3 +24,18 @@ concelhos(NDias, MaxDist, ConcelhosVisitados, DistTotal, TotalEleitores):-
 
 	length(ConcelhosVisitados, Dias),
 	findall(Concelho, (nth1(Indice, Temp, 1), nth1(Indice, Nomes, Concelho)), ConcelhosVisitados).
+
+
+ups_and_downs(Min, Max, N, L):-
+	length(L, N),
+	domain(L, Min, Max),
+
+	setConstraint(L),
+
+	labeling([], L).
+
+setConstraint([X, Y]):-
+	X #> Y #\/ X #< Y.
+setConstraint([X, Y, Z | L]):-
+	(Y #< X #/\ Y #< Z) #\/ (Y #> X #/\ Y #> Z),
+	setConstraint([Y, Z | L]).
