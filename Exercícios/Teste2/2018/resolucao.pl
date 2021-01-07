@@ -44,23 +44,17 @@ gym_pairs(ManHeights, WomenHeights, Delta, Pairs):-
 	length(Pair, Men), % List of all mans and cotains the indice of the woman
 	domain(Pair, 1, Men),
 	all_distinct(Pair),
-	setHeights(ManHeights, WomenHeights, Delta, Pair, 1),
+	setHeights(ManHeights, WomenHeights, Delta, Pair),
 	labeling([], Pair),
 	prepare(Pair, Pairs, 1). % Just change output from a single list to a list with pairs
 
-setHeights(_, _, _, [], _).
-setHeights(ManHeights, WomenHeights, Delta, [PH | PT], Current):-
-	nth1(Current, ManHeights, ManHeigth),
-	nth1(X, WomenHeights, WomenHeight), % Tries any womenHeight for the curren manHeight
-	0 =< ManHeigth - WomenHeight,
-	Delta >= ManHeigth - WomenHeight,
-	PH #= X,	% If heights are compatible then the pair number is the number of the women
-	Next is Current + 1,
-	setHeights(ManHeights, WomenHeights, Delta, PT, Next).
-setHeights(ManHeights, WomenHeights, Delta, [PH | PT], Current):-
-	PH #= 0,
-	Next is Current + 1,
-	setHeights(ManHeights, WomenHeights, Delta, PT, Next).
+setHeights([], _, _, []).
+setHeights([ManHeight | ManHeights], WomenHeights, Delta, [PH | PT]):-
+	element(X, WomenHeights, WomenHeight), % Tries any womenHeight for the curren manHeight
+	(0 #=< ManHeight - WomenHeight #/\
+	Delta #>= ManHeight - WomenHeight) #<=> Value,
+	PH #= Value * X,	% If heights are compatible then the pair number is the number of the women
+	setHeights(ManHeights, WomenHeights, Delta, PT).
 
 prepare([],[],_).
 prepare([PH | PT], [PSH | PST], Current):-
@@ -74,15 +68,10 @@ optimal_skating_pairs(ManHeights, WomenHeights, Delta, Pairs):-
 	length(Pair, Men),
 	domain(Pair, 0, Women),
 	all_distinct_except_0(Pair),
-	setHeights(ManHeights, WomenHeights, Delta, Pair, 1),
-	countNonZeros(Pair, Number),
-	labeling([maximize(Number)], Pair),
+	setHeights(ManHeights, WomenHeights, Delta, Pair),
+	count(0, Pair, #=, Number),
+	labeling([minimize(Number)], Pair),
 	prepare2(Pair, Pairs, 1). % Just change output from a single list to a list with pairs
-
-countNonZeros([], 0).
-countNonZeros([PH | PT], Number):-
-	countZeros(PT, Temp),
-	(PH is 0, Number is Temp; Number is Temp + 1).
 
 prepare2([],[],_).
 prepare2([0 | PT], Pairs, Current):-
