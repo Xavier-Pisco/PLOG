@@ -81,8 +81,16 @@ O comprimento da lista Vars vai ser o comprimento da lista de objetos, uma vez q
 
 O domínio atribuídos às variàveis em Vars será o número de partições do armário em altura vezes o número de partições em comprimento.
 
-Assim, a lista Vars vai ser um lista com comprimento igual à lista de objetos em que cada valor da lista representa o compartimento no armário, começando a contar da esquerda para a direita e de cima para baixo.
+Posteriormente será utilizado o predicado cumulatives em que a cada task corresponde o tamanho de um objeto e a cada machine corresponde o tamanho de uma prateleira. Por fim, impoẽm-se as restrições ao peso sabendo que a posição abaixo de uma determinada posição é a posição atual + comprimento.
 
 [código](resolucao.pl#36)
 
 ## Pergunta 7
+
+As variáveis de decisão são os tempos de início e de fim de cada tarefa. Por isso, são necessárias duas listas com comprimento igual ao número de objetos de modo a que cada objeto tenha associado um tempo de ínicio e um tempo de fim.
+
+Estas duas variáveis vão ter um domínio entre 0 (tempo de início) e o tempo máximo.
+
+Para resolver este problema é necessário recorrer ao predicado cumulative em que cada tasks irá ter um tempo de início não definido, a duração do objeto correspondente, o tempo de fim não definido, o consumo será o número de homens necessários e o id será o nome do objeto. O limite será o número de total de homens, uma vez que, nunca podem estar a trabalhar mais homens do que os que existem.
+
+[código](resolucao.pl#100)
