@@ -109,8 +109,9 @@ furniture:-
 
 	get_tasks(Objetos, StartingTimes, EndingTimes, Tasks),
 	cumulative(Tasks, [limit(Homens)]), % Resolve todas as tasks de forma a que o consumo nunca execeda o limit em nenhum momento.
-	labeling([], StartingTimes),
-	labeling([], EndingTimes),
+	maximum(FinalTime, EndingTimes),
+	labeling([minimize(FinalTime)], StartingTimes),
+	labeling([minimize(FinalTime)], EndingTimes),
 	findall(_, (nth1(Index, Objetos, ON-_-_), nth1(Index, StartingTimes, ST), nth1(Index, EndingTimes, ET), write(ON-ST-ET), nl), _).
 
 get_tasks([], [], [], []).
