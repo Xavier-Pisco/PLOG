@@ -64,7 +64,7 @@ A restrição faz com que um número determinado número só possa ser par ou qu
 ## Pergunta 5
 
 Não percebi muito bem o exercício mas fiz isto
-```
+```prolog
 constroi_bins(_, [], []).
 constroi_bins(I, [VH | VT], [LBinH | LBinT]):-
 	I #= VH #<=> LBinH,
