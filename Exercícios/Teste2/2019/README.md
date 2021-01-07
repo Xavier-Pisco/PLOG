@@ -67,12 +67,8 @@ Não percebi muito bem o exercício mas fiz isto
 ```
 constroi_bins(_, [], []).
 constroi_bins(I, [VH | VT], [LBinH | LBinT]):-
-	I #= VH,
-	LBinH #= VH,
+	I #= VH #<=> LBinH,
 	constroi_bins(I, VT, LBinT).
-constroi_bins(I, [VH | VT], LBin):-
-	VH #\= I,
-	constroi_bins(I, VT, LBin).
 ```
 
 ## Pergunta 6
