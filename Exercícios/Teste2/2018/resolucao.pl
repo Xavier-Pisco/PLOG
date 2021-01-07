@@ -52,7 +52,7 @@ setHeights([], _, _, []).
 setHeights([ManHeight | ManHeights], WomenHeights, Delta, [PH | PT]):-
 	element(X, WomenHeights, WomenHeight), % Tries any womenHeight for the curren manHeight
 	(0 #=< ManHeight - WomenHeight #/\
-	Delta #>= ManHeight - WomenHeight) #<=> Value,
+	Delta #> ManHeight - WomenHeight) #<=> Value,
 	PH #= Value * X,	% If heights are compatible then the pair number is the number of the women
 	setHeights(ManHeights, WomenHeights, Delta, PT).
 
