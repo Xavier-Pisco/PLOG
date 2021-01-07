@@ -61,16 +61,25 @@ team(Players, T):-
 	length(Team, N2),
 	length(Chars, N1),
 	domain(Team, 1, N1),
+
+	count(2, Team, #=, X),
+	X1 #= X + 1,
+	count(1, Team, #=<, X1), count(1, Team, #>=, X),
+	count(3, Team, #=<, X1), count(3, Team, #>=, X),
+	count(4, Team, #=<, X1), count(4, Team, #>=, X),
+	count(5, Team, #=<, X1), count(5, Team, #>=, X),
+
 	preferences(Players, Champs, Team),
-	ratios_sum(Players, Champs, Team, Ratio),
+	ratios_sum(Players, Champs, Team, Ratio), !,
 	labeling([maximize(Ratio)], Team),
+
 	findall(Champ, (nth1(_, Team, Number), nth1(Number, Champs, Champ)), T).
 
 preferences([], _, []).
 preferences([P | Players], Champs, [T | Team]):-
 	rightChoice(P),
 	pref(P, C),
-	element(Index, Champs, C),
+	nth1(Index, Champs, C),
 	T #= Index,
 	preferences(Players, Champs, Team).
 preferences([_ | Players], Champs, [_ | Team]):-
@@ -78,7 +87,7 @@ preferences([_ | Players], Champs, [_ | Team]):-
 
 ratios_sum([], _, [], 0).
 ratios_sum([P | Players], Champs, [T | Team], Total):-
-	ratios_sum(Players, Team, SubTotal),
-	element(T, Champs, Champ),
+	ratios_sum(Players, Champs, Team, SubTotal),
+	nth1(T, Champs, Champ),
 	ratio(P, Champ, Ratio),
 	Total #= SubTotal + Ratio.

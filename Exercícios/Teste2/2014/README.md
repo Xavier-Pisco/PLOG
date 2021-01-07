@@ -15,3 +15,7 @@ A segunda alternativa. Enquanto as outras duas instanciam as variáveis A e B, a
 [código](resolucao.pl#L21)
 
 ## Pergunta 5
+
+Este exrcício não está bem feito pois envolve algum backtracking que foi omitido através do uso de um cut.
+
+[código](resolucao.pl#L36)
