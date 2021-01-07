@@ -83,7 +83,7 @@ O domínio atribuídos às variàveis em Vars será o número de partições do 
 
 Posteriormente será utilizado o predicado cumulatives em que a cada task corresponde o tamanho de um objeto e a cada machine corresponde o tamanho de uma prateleira. Por fim, impoẽm-se as restrições ao peso sabendo que a posição abaixo de uma determinada posição é a posição atual + comprimento.
 
-[código](resolucao.pl#36)
+[código](resolucao.pl#L36)
 
 ## Pergunta 7
 
@@ -93,4 +93,4 @@ Estas duas variáveis vão ter um domínio entre 0 (tempo de início) e o tempo 
 
 Para resolver este problema é necessário recorrer ao predicado cumulative em que cada tasks irá ter um tempo de início não definido, a duração do objeto correspondente, o tempo de fim não definido, o consumo será o número de homens necessários e o id será o nome do objeto. O limite será o número de total de homens, uma vez que, nunca podem estar a trabalhar mais homens do que os que existem.
 
-[código](resolucao.pl#100)
+[código](resolucao.pl#L100)
