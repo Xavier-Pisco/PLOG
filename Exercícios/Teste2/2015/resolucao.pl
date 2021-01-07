@@ -40,3 +40,5 @@ set_min_max(NBags, MinObj, MaxObj, Vars):-
 	Times #= 0 #\/ (Times #=< MaxObj #/\ Times #>= MinObj),
 	NBags1 is NBags - 1,
 	set_min_max(NBags1, MinObj, MaxObj, Vars).
+
+	
