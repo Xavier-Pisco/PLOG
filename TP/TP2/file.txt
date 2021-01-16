@@ -1,0 +1,10 @@
+| R| R| Y|W1| G|
+ |Y |W2|W3|W4|
+  |W5|G |W6| 
+   |W7|W8|
+    |W9|
+
+R - Bolas vermelhas
+Y - Bolas amarelas
+G - Bolas verdes
+W - Bolas Brancas

@@ -1,0 +1,23 @@
+Tabuleiro Inicial
+
+  |   1   |   2   |   3   |   4   |   5   |
+-------------------------------------------
+A |       |       |       |   B   |   B   |
+-------------------------------------------
+B |       |       |       |       |   B   |
+-------------------------------------------
+C |       |       |       |       |       |
+-------------------------------------------
+D |   W   |       |       |       |       |
+-------------------------------------------
+E |   W   |   W   |       |       |       |
+-------------------------------------------
+
+'   '- Empty Space
+' B '- Black ring and black ball
+' W '- White ring and white ball
+' RB'- Black ring
+' RW'- White ring
+' RG'- Black ring and white ring
+'RGW'- White ring, black ring and white ball
+'RGB'- White ring, black ring and black ball
