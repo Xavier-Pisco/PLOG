@@ -7,12 +7,6 @@
 Repositório da cadeira *Programação em Lógica* no ano lectivo 2020-21.
 
 
-Professor Teóricas - Rui Camacho & Daniel Silva
-<br>
-Professor Práticas - *undefined*
-
-<br>
-
 |Designação|Peso|Nota Mínima|
 |-|-|-|
 |Testes|50%|7|
@@ -48,12 +42,3 @@ Nota: 1º Trabalho tem interface com LAIG
 2º Trabalho - 4 de Janeiro
 
 2º Teste - 8 de Janeiro
-
----
-
-## Teóricas
-
----
-
-## Práticas
-
